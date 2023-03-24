@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlatformVR : MonoBehaviour
 {
     AudioSource sound;
 
     private bool playerOnPlatform = false;
+    public UnityEvent onPlayerInPlatform = new UnityEvent();
+    public UnityEvent onPlayerOutPlatform = new UnityEvent();
 
     void Start()
     {
@@ -19,6 +22,7 @@ public class PlatformVR : MonoBehaviour
         {
             sound.Play();
             playerOnPlatform = true;
+            onPlayerInPlatform.Invoke();
             //StartMinigame();
         }
     }
@@ -29,6 +33,7 @@ public class PlatformVR : MonoBehaviour
         {
             sound.Stop();
             playerOnPlatform = false;
+            onPlayerOutPlatform.Invoke();
             //StopMinigame();
         }
     }
