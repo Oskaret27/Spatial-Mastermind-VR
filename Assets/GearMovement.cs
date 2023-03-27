@@ -6,6 +6,7 @@ public class GearMovement : MonoBehaviour
 {
     [SerializeField]
     float speed;
+    public GameObject gearShape;
 
     void Start()
     {
@@ -19,4 +20,11 @@ public class GearMovement : MonoBehaviour
         transform.rotation *= quaternionRotation; 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == gearShape)
+        {
+            Debug.Log("Col");
+        }
+    }
 }

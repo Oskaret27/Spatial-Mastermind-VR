@@ -714,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 08602e4dc6b8f6948bdb383f2880fc46, type: 3}
       propertyPath: m_Name
-      value: Gear
+      value: Gears
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08602e4dc6b8f6948bdb383f2880fc46, type: 3}
@@ -730,12 +730,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325393629}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8837bf2802aafd746bea211d594addb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 35
+  gearShape: {fileID: 801854541}
 --- !u!4 &325393633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08602e4dc6b8f6948bdb383f2880fc46, type: 3}
@@ -770,6 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821a535042db1284bbf5b9c1de6d4d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gear: {fileID: 325393630}
 --- !u!4 &343276987
 Transform:
   m_ObjectHideFlags: 0
@@ -932,11 +934,27 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532440673}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.18141605, y: 0.03931619, z: 0.18141611}
   m_Center: {x: 0, y: 0.019657923, z: -0.000000115484}
+--- !u!54 &532440681
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532440673}
+  serializedVersion: 2
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &558267129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,7 +1915,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801854541}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.13433394, y: 0.03931619, z: 0.14267534}
@@ -2260,7 +2278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 08602e4dc6b8f6948bdb383f2880fc46, type: 3}
       propertyPath: m_Name
-      value: Gear (1)
+      value: Gear
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08602e4dc6b8f6948bdb383f2880fc46, type: 3}

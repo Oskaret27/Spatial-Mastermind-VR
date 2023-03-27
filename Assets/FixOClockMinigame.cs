@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class FixOClockMinigame : MonoBehaviour, IMinigame
 {
-
-    private GameObject gearObject;
+    [SerializeField]
+    
+    public GearMovement gear;
 
     void Start()
     {
-        gearObject = new GameObject("GearObject");
-        GearMovement gearMovement = gearObject.AddComponent<GearMovement>();
-
         //gearMovement.speed = 10.0f;
 
-        gearObject.SetActive(false);
+        gear.gameObject.SetActive(false);
     }
 
 
@@ -25,12 +23,12 @@ public class FixOClockMinigame : MonoBehaviour, IMinigame
 
     public void StartMiniGame() 
     {
-        gearObject.SetActive(true);
+        gear.gameObject.SetActive(true);
     }
 
     public void EndMiniGame() 
     {
-        gearObject.SetActive(false);
+        gear.gameObject.SetActive(false);
     }
 }
 
