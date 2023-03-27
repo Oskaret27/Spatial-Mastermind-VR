@@ -10,10 +10,12 @@ public class PlatformVR : MonoBehaviour
     private bool playerOnPlatform = false;
     public UnityEvent onPlayerInPlatform = new UnityEvent();
     public UnityEvent onPlayerOutPlatform = new UnityEvent();
+    private FixOClockMinigame minigame;
 
     void Start()
     {
         sound = GetComponent<AudioSource>();
+        minigame = gameObject.AddComponent<FixOClockMinigame>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,7 +25,7 @@ public class PlatformVR : MonoBehaviour
             sound.Play();
             playerOnPlatform = true;
             onPlayerInPlatform.Invoke();
-            //StartMinigame();
+            minigame.StartMiniGame();
         }
     }
 
@@ -34,7 +36,7 @@ public class PlatformVR : MonoBehaviour
             sound.Stop();
             playerOnPlatform = false;
             onPlayerOutPlatform.Invoke();
-            //StopMinigame();
+            minigame.EndMiniGame();
         }
     }
 

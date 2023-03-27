@@ -18,4 +18,5 @@ public class GearMovement : MonoBehaviour
         Quaternion quaternionRotation = Quaternion.AngleAxis(time, Vector3.forward);
         transform.rotation *= quaternionRotation; 
     }
+
 }

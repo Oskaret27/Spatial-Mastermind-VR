@@ -41,6 +41,13 @@ public class ButtonVR : MonoBehaviour
         }
     }
 
+    public void OnCollisionEnter(Collision collision) 
+    {
+        print("choca");
+
+    }
+
+    /*
     public void SpawnSphere() 
     {
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -48,5 +55,6 @@ public class ButtonVR : MonoBehaviour
         sphere.transform.localPosition = new Vector3(0, 1, 2);
         sphere.AddComponent<Rigidbody>();
     }
+    */
 
 }
