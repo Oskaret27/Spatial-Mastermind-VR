@@ -5,8 +5,9 @@ using UnityEngine;
 public class GearMovement : MonoBehaviour
 {
     [SerializeField]
-    float speed;
+    public float speed;
     public GameObject gearShape;
+    public bool isColliding;
 
     void Start()
     {
@@ -22,9 +23,18 @@ public class GearMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == gearShape)
+        if (other.transform.parent.CompareTag("GearShapes"))
         {
-            Debug.Log("Col");
+            isColliding = true;
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.parent.CompareTag("GearShapes"))
+        {
+            isColliding = false;
+        }
+    }
+
 }

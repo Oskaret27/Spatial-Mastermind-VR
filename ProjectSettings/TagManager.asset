@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SamplesInfoPanel
   - RoomLight
+  - GearShapes
   layers:
   - Default
   - TransparentFX
