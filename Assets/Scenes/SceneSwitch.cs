@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class SceneSwitch : MonoBehaviour
 {
 
+    [SerializeField] public int sceneIndex;
+
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player") && !other.isTrigger)
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(sceneIndex);
     }
 }

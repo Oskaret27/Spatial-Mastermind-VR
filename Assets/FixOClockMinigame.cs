@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class FixOClockMinigame : MonoBehaviour, IMinigame
@@ -9,24 +10,36 @@ public class FixOClockMinigame : MonoBehaviour, IMinigame
     [SerializeField] public GearMovement gear;
     [SerializeField] Transform shapes;
     [SerializeField] int pointsWin;
+    [SerializeField] Text SuccessesText;
+    [SerializeField] Text FailuresText;
+    [SerializeField] GameObject canvas;
 
     int success = 0;
     int fails = 0;
+    float delayInSeconds = 10.0f;
 
     void Start()
     {
-        gear.gameObject.SetActive(false);
+        Invoke("DelayedMethod", delayInSeconds);
+        
     }
 
+    void DelayedMethod() { FindObjectOfType<AudioManager>().Play("Explication"); }
 
     void Update()
     {
-        
+        SuccessesText.text = success.ToString();
+        FailuresText.text = fails.ToString();
     }
 
     public void StartMiniGame() 
     {
+        success = 0;
+        fails = 0;
+
         gear.gameObject.SetActive(true);
+        shapes.gameObject.SetActive(true);
+        
         UpdateShape();
     }
 
@@ -43,9 +56,8 @@ public class FixOClockMinigame : MonoBehaviour, IMinigame
 
     public void EndMiniGame() 
     {
-        Debug.Log(fails);
-        Debug.Log(success);
         gear.gameObject.SetActive(false);
+        shapes.gameObject.SetActive(false);
     }
 
     public void OnButtonPressed() 
@@ -59,7 +71,12 @@ public class FixOClockMinigame : MonoBehaviour, IMinigame
             UpdateShape();
             gear.speed += SPEED_INCR;
 
-            if (pointsWin == success) EndMiniGame();
+            if (pointsWin == success) 
+            {          
+                EndMiniGame();
+                FindObjectOfType<AudioManager>().Play("Congratulations");
+                canvas.gameObject.SetActive(true);              
+            }          
         }
 
         else 
