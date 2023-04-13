@@ -3233,7 +3233,19 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: Explication
-    clip: {fileID: 8300000, guid: 04dbb932f4bcfff4caca559bc7e55f08, type: 3}
+    clip: {fileID: 8300000, guid: 8366f614e303fee498acba72b74eff95, type: 3}
+    volume: 0.84
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Explication2
+    clip: {fileID: 8300000, guid: f986b4a9d6db17b4a9b4943d6e879ce5, type: 3}
+    volume: 0.84
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Explication3
+    clip: {fileID: 8300000, guid: 30afe053b991c8e4195e69bec2426a0e, type: 3}
     volume: 0.84
     pitch: 1
     loop: 0
@@ -3247,6 +3259,12 @@ MonoBehaviour:
   - name: DoorOpen
     clip: {fileID: 8300000, guid: e335f747138a91f418ef3099f46c8417, type: 3}
     volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Wooa
+    clip: {fileID: 8300000, guid: 3fda374d8bb2cbb4da884919fe118d52, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}

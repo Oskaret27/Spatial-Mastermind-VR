@@ -9,6 +9,7 @@ public class ButtonVR : MonoBehaviour
     public UnityEvent onPress;
     public UnityEvent onRelease;
 
+
     GameObject presser;
     AudioSource sound;
     bool isPressed;
@@ -40,15 +41,4 @@ public class ButtonVR : MonoBehaviour
             isPressed = false;
         }
     }
-
-    /*public void SpawnSphere() 
-    {
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-        sphere.transform.localPosition = new Vector3(0, 1, 2);
-        sphere.AddComponent<Rigidbody>();
-    }
-    */
-
-
 }

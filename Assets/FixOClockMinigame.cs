@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
-public class FixOClockMinigame : MonoBehaviour, IMinigame
+public class FixOClockMinigame : MonoBehaviour
 {
 
     [SerializeField] public GearMovement gear;
@@ -16,15 +16,6 @@ public class FixOClockMinigame : MonoBehaviour, IMinigame
 
     int success = 0;
     int fails = 0;
-    float delayInSeconds = 10.0f;
-
-    void Start()
-    {
-        Invoke("DelayedMethod", delayInSeconds);
-        
-    }
-
-    void DelayedMethod() { FindObjectOfType<AudioManager>().Play("Explication"); }
 
     void Update()
     {
@@ -37,6 +28,7 @@ public class FixOClockMinigame : MonoBehaviour, IMinigame
         success = 0;
         fails = 0;
 
+        FindObjectOfType<AudioManager>().Play("Explication");
         gear.gameObject.SetActive(true);
         shapes.gameObject.SetActive(true);
         
@@ -57,7 +49,7 @@ public class FixOClockMinigame : MonoBehaviour, IMinigame
     public void EndMiniGame() 
     {
         gear.gameObject.SetActive(false);
-        shapes.gameObject.SetActive(false);
+        shapes.gameObject.SetActive(false);    
     }
 
     public void OnButtonPressed() 
@@ -75,7 +67,7 @@ public class FixOClockMinigame : MonoBehaviour, IMinigame
             {          
                 EndMiniGame();
                 FindObjectOfType<AudioManager>().Play("Congratulations");
-                canvas.gameObject.SetActive(true);              
+                canvas.gameObject.SetActive(true);
             }          
         }
 
@@ -85,9 +77,4 @@ public class FixOClockMinigame : MonoBehaviour, IMinigame
             fails += 1;
         }
     }
-}
-
-public interface IMinigame 
-{ 
-
 }
