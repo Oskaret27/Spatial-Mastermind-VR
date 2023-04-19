@@ -19,6 +19,7 @@ public class ShadowPuppetsMinigame : MonoBehaviour
     public int fails = 0;
     int level = 0;
     int correctIndex;
+    bool endGame = false;
 
     private void Start()
     {
@@ -42,7 +43,6 @@ public class ShadowPuppetsMinigame : MonoBehaviour
 
         correctIndex = Random.Range(0, buttons.Length-1);
 
-       
         for (int i=0, j=0; i<buttons.Length; i++) {
 
             if (i == correctIndex)
@@ -60,6 +60,7 @@ public class ShadowPuppetsMinigame : MonoBehaviour
 
     public void EndMiniGame()
     {
+        endGame = true;
         Destroy(modelParent.GetChild(0).gameObject);
         FindObjectOfType<AudioManager>().Play("Congratulations");
         canvas.gameObject.SetActive(true);
@@ -67,24 +68,28 @@ public class ShadowPuppetsMinigame : MonoBehaviour
 
     public void OnButtonPressed(int index)
     {
-        if (index == correctIndex)
+        if (!endGame) 
         {
-            FindObjectOfType<AudioManager>().Play("SuccessCollision");
-            level += 1;
-            success += 1;
-
-            if (pointsWin == success)
+            if (index == correctIndex)
             {
-                EndMiniGame();
-            }
+                FindObjectOfType<AudioManager>().Play("SuccessCollision");
+                level += 1;
+                success += 1;
 
-            PrepareLevel();
+                if (pointsWin == success)
+                {
+                    EndMiniGame();
+                }
+
+                PrepareLevel();
+            }
+            else
+            {
+                FindObjectOfType<AudioManager>().Play("FailCollision");
+                fails += 1;
+
+            }
         }
-        else 
-        {
-            FindObjectOfType<AudioManager>().Play("FailCollision");
-            fails += 1; 
         
-        }
     }
 }
