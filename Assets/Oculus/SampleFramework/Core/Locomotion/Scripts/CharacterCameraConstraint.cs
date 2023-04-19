@@ -74,7 +74,8 @@ public class CharacterCameraConstraint : MonoBehaviour
 
 	private void OnDisable()
 	{
-		_simplePlayerController.CameraUpdated -= CameraUpdate;
+		if (_simplePlayerController != null)
+			_simplePlayerController.CameraUpdated -= CameraUpdate;
 	}
 
 	/// <summary>
