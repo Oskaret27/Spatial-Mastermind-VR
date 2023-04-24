@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de16f4b0750f4d14089744f27cf6e5f4, type: 3}
   m_Name: DragTheCubesLevel3
   m_EditorClassIdentifier: 
-  correctCells: 00000000000000000000000000000000
+  correctCells: 0a000000070000000600000001000000
   instructions: {fileID: 2100000, guid: 34a2e2ec2abb0c7449ea356189708eae, type: 2}
   model: {fileID: 2249374754503836979, guid: 6076514fa7c383e44a2a67bd7030bd00, type: 3}
   cubes:

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de16f4b0750f4d14089744f27cf6e5f4, type: 3}
   m_Name: DragTheCubesLevel2
   m_EditorClassIdentifier: 
-  correctCells: 00000000000000000000000000000000
-  instructions: {fileID: 2100000, guid: 188f6f9423efbe5429c1f574f8a0d185, type: 2}
+  correctCells: 05000000030000000b00000006000000
+  instructions: {fileID: 2100000, guid: 78f80e175515f8941a0aaafa4f5fd335, type: 2}
   model: {fileID: 5491155214845394500, guid: 9b91ec1a652678547b0c4d69f780e1df, type: 3}
   cubes:
   - {fileID: 7179724821715279382, guid: b0121abe56b116049a1ecfd840f22758, type: 3}

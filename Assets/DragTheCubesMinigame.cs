@@ -20,35 +20,65 @@ public class DragTheCubesMinigame : MonoBehaviour
     public int success = 0;
     public int fails = 0;
     int level = 0;
-    int correctIndex;
     bool endGame = false;
+    private Vector3 instructionOriginalPosition;
 
     private void Start()
     {
+        timer.gameObject.SetActive(true);
+        instruction.gameObject.SetActive(true);
+        instructionOriginalPosition = instruction.transform.position;
         FindObjectOfType<AudioManager>().Play("Explication3");
-        
+        PrepareLevel();
+
     }
     void Update()
     {
-        if(ckeckWin()) print("win");
         SuccessesText.text = success.ToString();
         FailuresText.text = fails.ToString();
     }
 
     void PrepareLevel()
     {
-        
         DragTheCubesLevel levelData = levels[level];
 
         if (modelParentInitial.childCount > 0)
-            Destroy(modelParentInitial.GetChild(0).gameObject);
+               Destroy(modelParentInitial.GetChild(0).gameObject);
 
         Instantiate(levelData.model, Vector3.zero, Quaternion.identity, modelParentInitial);
 
-        foreach (GameObject cube in levelData.cubes)
-            Instantiate(cube, modelParent);
+
+        if (modelParent.childCount > 0) {
+            foreach (Transform child in modelParent) 
+            {
+                GameObject.Destroy(child.gameObject);
+            }       
+        }
+
+
+        foreach (GameObject cube in levelData.cubes) 
+        {
+            Vector3 cubePosition = modelParent.position;
+
+            if (modelParent.childCount > 0)
+            {
+                // Get the position of the last instantiated cube
+                Transform lastCube = modelParent.GetChild(modelParent.childCount - 1);
+
+                cubePosition = lastCube.position + new Vector3(0, cube.GetComponent<Renderer>().bounds.size.y, 0);
+            }
+            Instantiate(cube, cubePosition, Quaternion.identity, modelParent);
+        }               
 
         instruction.transform.GetChild(0).GetComponent<MeshRenderer>().material = levelData.instructions;
+    }
+
+
+    public void OnButtonPressed()
+    {
+        instruction.transform.position = instructionOriginalPosition;
+        instruction.transform.rotation = Quaternion.Euler(90f, 0f, 90f);
+        checkWin();      
     }
 
     public void EndMiniGame()
@@ -58,17 +88,22 @@ public class DragTheCubesMinigame : MonoBehaviour
         canvas.gameObject.SetActive(true);
     }
 
-    public void OnButtonPressed()
+    public bool lvlSuccess() 
     {
-        timer.gameObject.SetActive(true);
-        instruction.gameObject.SetActive(true);
-        PrepareLevel();
-        level++;
+        DragTheCubesLevel levelData = levels[level];
+        foreach (int cell in levelData.correctCells)
+        {
+            if (!matrixSocket[cell].cubeOn) return false;
+        }
 
-        /*
+        return true;
+    }
+
+    public void checkWin() 
+    {    
         if (!endGame)
         {
-            if (ckeckWin())
+            if (lvlSuccess())
             {
                 FindObjectOfType<AudioManager>().Play("SuccessCollision");
                 level += 1;
@@ -88,16 +123,5 @@ public class DragTheCubesMinigame : MonoBehaviour
 
             }
         }
-        */
-    }
-
-    public bool ckeckWin() 
-    {
-        DragTheCubesLevel levelData = levels[level];
-        foreach (int cell in levelData.correctCells) 
-        {
-            if (!matrixSocket[cell].cubeOn) return false;
-        }
-        return true;
     }
 }

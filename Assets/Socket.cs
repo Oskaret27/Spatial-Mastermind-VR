@@ -33,7 +33,6 @@ public class Socket : MonoBehaviour
         grabbable.transform.rotation = Quaternion.identity;
     }
     
-
     private void Start()
     {
         offsetTransform = new GameObject(nameof(offsetTransform)).transform;   

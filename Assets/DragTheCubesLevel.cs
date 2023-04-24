@@ -7,6 +7,5 @@ public class DragTheCubesLevel : ScriptableObject
     public Material instructions;
 
     public GameObject model;
-
     public GameObject[] cubes;
 }
