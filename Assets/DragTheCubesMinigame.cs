@@ -6,11 +6,11 @@ using UnityEngine.Audio;
 
 public class DragTheCubesMinigame : MonoBehaviour
 {
-    [SerializeField] int pointsWin;
+
     [SerializeField] Text SuccessesText;
     [SerializeField] Text FailuresText;
     [SerializeField] GameObject canvas;
-    [SerializeField] GameObject timer;
+    [SerializeField] Timer timer;
     [SerializeField] GameObject instruction;
     [SerializeField] DragTheCubesLevel[] levels;
     [SerializeField] Transform modelParent;
@@ -35,25 +35,24 @@ public class DragTheCubesMinigame : MonoBehaviour
     void Update()
     {
         SuccessesText.text = success.ToString();
-        FailuresText.text = fails.ToString();
+        FailuresText.text = fails.ToString();       
     }
 
     void PrepareLevel()
     {
+        timer.ResetTimer();
+
         DragTheCubesLevel levelData = levels[level];
+        GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cube");
 
         if (modelParentInitial.childCount > 0)
                Destroy(modelParentInitial.GetChild(0).gameObject);
 
         Instantiate(levelData.model, Vector3.zero, Quaternion.identity, modelParentInitial);
 
-
-        if (modelParent.childCount > 0) {
-            foreach (Transform child in modelParent) 
-            {
-                GameObject.Destroy(child.gameObject);
-            }       
-        }
+        
+        foreach(GameObject cube in cubes)
+            GameObject.Destroy(cube);
 
 
         foreach (GameObject cube in levelData.cubes) 
@@ -68,14 +67,15 @@ public class DragTheCubesMinigame : MonoBehaviour
                 cubePosition = lastCube.position + new Vector3(0, cube.GetComponent<Renderer>().bounds.size.y, 0);
             }
             Instantiate(cube, cubePosition, Quaternion.identity, modelParent);
-        }               
+        }
 
         instruction.transform.GetChild(0).GetComponent<MeshRenderer>().material = levelData.instructions;
+       
     }
 
 
     public void OnButtonPressed()
-    {
+    {   
         instruction.transform.position = instructionOriginalPosition;
         instruction.transform.rotation = Quaternion.Euler(90f, 0f, 90f);
         checkWin();      
@@ -86,6 +86,7 @@ public class DragTheCubesMinigame : MonoBehaviour
         endGame = true;
         FindObjectOfType<AudioManager>().Play("Congratulations");
         canvas.gameObject.SetActive(true);
+        timer.gameObject.SetActive(false);
     }
 
     public bool lvlSuccess() 
@@ -93,35 +94,41 @@ public class DragTheCubesMinigame : MonoBehaviour
         DragTheCubesLevel levelData = levels[level];
         foreach (int cell in levelData.correctCells)
         {
-            if (!matrixSocket[cell].cubeOn) return false;
+            if (!matrixSocket[cell].cubeOn) return false;          
         }
 
         return true;
     }
 
-    public void checkWin() 
-    {    
-        if (!endGame)
+    //timer.IsTimeOver()
+
+    public void checkWin()
+    {
+        if (endGame) return;
+
+        bool success = lvlSuccess() && !timer.IsTimeOver();
+
+        if (success)
         {
-            if (lvlSuccess())
-            {
-                FindObjectOfType<AudioManager>().Play("SuccessCollision");
-                level += 1;
-                success += 1;
+            FindObjectOfType<AudioManager>().Play("SuccessCollision");
+            this.success++;
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("FailCollision");
+            this.fails++;
+        }
 
-                if (pointsWin == success)
-                {
-                    EndMiniGame();
-                }
+        level++;
 
-                PrepareLevel();
-            }
-            else
-            {
-                FindObjectOfType<AudioManager>().Play("FailCollision");
-                fails += 1;
-
-            }
+        if (level >= levels.Length)
+        {
+            EndMiniGame();
+        }
+        else
+        {
+            PrepareLevel();
         }
     }
+
 }

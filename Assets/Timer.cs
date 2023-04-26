@@ -29,7 +29,12 @@ public class Timer : MonoBehaviour {
         ResetTimer();
     }
 
-    private void ResetTimer() {
+    public bool IsTimeOver()
+    {
+        return timer <= 0;
+    }
+
+    public void ResetTimer() {
         if (countDown) {
             timer = timerDuration;
         } else {

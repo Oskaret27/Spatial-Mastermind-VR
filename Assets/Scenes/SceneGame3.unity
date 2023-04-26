@@ -3721,7 +3721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff03d05af5f18d14993699d04a1b8b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerDuration: 100
+  timerDuration: 60
   countDown: 1
   firstMinute: {fileID: 297473083}
   secondMinute: {fileID: 114665021}
@@ -3884,11 +3884,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e8423e425b5394bbddf2f779221f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsWin: 4
   SuccessesText: {fileID: 468004541}
   FailuresText: {fileID: 1833605176}
   canvas: {fileID: 1382774760}
-  timer: {fileID: 977985158}
+  timer: {fileID: 977985163}
   instruction: {fileID: 1482483426}
   levels:
   - {fileID: 11400000, guid: b4ccc945fb71e7740b0feb7bc896151b, type: 2}
@@ -8656,7 +8655,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f6e0eff1c5ba8c14eb027e454c5dbb51, type: 2}
+  - {fileID: 2100000, guid: 4c811ff11a5fca24aa33458a193b7afa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
