@@ -100,8 +100,6 @@ public class DragTheCubesMinigame : MonoBehaviour
         return true;
     }
 
-    //timer.IsTimeOver()
-
     public void checkWin()
     {
         if (endGame) return;
