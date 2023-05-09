@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8e0e6fcf3a08b42852635db3b45a35, type: 3}
+  m_Name: ShadowPuppetsLevel2
+  m_EditorClassIdentifier: 
+  correctMaterial: {fileID: 2100000, guid: f2907f9481deda743ada3f8a5518d2e1, type: 2}
+  otherMaterials:
+  - {fileID: 2100000, guid: e70c823ecc977a24282b8288cafc1b57, type: 2}
+  - {fileID: 2100000, guid: 8911a681d2d38b54c8e3339dfd6b1ea0, type: 2}
+  - {fileID: 2100000, guid: 21a07f9f9cc5b8048bf16a369d07ac78, type: 2}
+  model: {fileID: 919132149155446097, guid: 501cf25a94718634b8acdfb9c8956b54, type: 3}
