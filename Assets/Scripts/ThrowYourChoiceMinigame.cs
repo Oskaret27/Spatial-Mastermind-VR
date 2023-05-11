@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using System.Collections;
 
 public class ThrowYourChoiceMinigame : MonoBehaviour
 {
@@ -29,12 +30,14 @@ public class ThrowYourChoiceMinigame : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("Explication");
         ballOriginalPosition = ball.transform.position;
+
         PrepareLevel();
     }
     void Update()
     {
         SuccessesText.text = success.ToString();
         FailuresText.text = fails.ToString();
+
         closeDoor();
     }
 
@@ -49,15 +52,28 @@ public class ThrowYourChoiceMinigame : MonoBehaviour
             closedDoors = true;
             timer.gameObject.SetActive(false);
 
-            PrepareLevel();
+            if (pointsWin == success)
+            {
+                EndMiniGame();
+            }
+            StartCoroutine(spawnObject());
         }
+    }
+
+    IEnumerator spawnObject() 
+    {
+        yield return new WaitForSeconds(1.8f);
+        PrepareLevel();
     }
 
     public void PrepareLevel()
     {
+
         ThrowYourChoiceLevel levelData = levels[level];
 
         model = Instantiate(levelData.model, modelParent);
+        timer.ResetTimer();
+        closedDoors = false;
 
         correctIndex = Random.Range(0, options.Length - 1);
 
@@ -90,11 +106,7 @@ public class ThrowYourChoiceMinigame : MonoBehaviour
 
                 GameObject.Find("Doors").GetComponent<Animator>().SetTrigger("OpenTest");
                 timer.gameObject.SetActive(true);                                
-
-                if (pointsWin == success)
-                {
-                    EndMiniGame();
-                }
+                
             }
             else
             {
@@ -109,7 +121,6 @@ public class ThrowYourChoiceMinigame : MonoBehaviour
     public void EndMiniGame()
     {
         endGame = true;
-        Destroy(modelParent.GetChild(0).gameObject);
         FindObjectOfType<AudioManager>().Play("Congratulations");
         canvas.gameObject.SetActive(true);
     }
