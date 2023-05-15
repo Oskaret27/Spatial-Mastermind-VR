@@ -15,6 +15,7 @@ public class ThrowYourChoiceMinigame : MonoBehaviour
     [SerializeField] ThrowYourChoiceLevel[] levels;
     [SerializeField] Transform modelParent;
     [SerializeField] GameObject[] options;
+    [SerializeField] GlobalScoreObject globalScore;
 
 
     public int success = 0;
@@ -123,6 +124,8 @@ public class ThrowYourChoiceMinigame : MonoBehaviour
         endGame = true;
         FindObjectOfType<AudioManager>().Play("Congratulations");
         canvas.gameObject.SetActive(true);
+
+        globalScore.levelScores[3] = new LevelScore(success, fails);
     }
  
 }

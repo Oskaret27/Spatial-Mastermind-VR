@@ -349,6 +349,7 @@ MonoBehaviour:
   - {fileID: 834740846}
   - {fileID: 2141857618}
   - {fileID: 390589846}
+  globalScore: {fileID: 11400000, guid: 2338c18994f98764e9d7474d2fffb8e3, type: 2}
   success: 0
   fails: 0
 --- !u!1001 &49607703

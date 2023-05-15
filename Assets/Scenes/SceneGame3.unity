@@ -3705,6 +3705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerDuration: 60
   countDown: 1
+  initialized: 0
   firstMinute: {fileID: 297473083}
   secondMinute: {fileID: 114665021}
   separator: {fileID: 193971034}
@@ -3895,6 +3896,7 @@ MonoBehaviour:
   - {fileID: 1105949239}
   - {fileID: 1023695771}
   - {fileID: 2094682898}
+  globalScore: {fileID: 11400000, guid: 2338c18994f98764e9d7474d2fffb8e3, type: 2}
   success: 0
   fails: 0
 --- !u!1 &1023695766

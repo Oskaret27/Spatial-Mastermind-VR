@@ -1295,6 +1295,7 @@ MonoBehaviour:
   SuccessesText: {fileID: 266410974}
   FailuresText: {fileID: 47482889}
   canvas: {fileID: 814116965}
+  globalScore: {fileID: 11400000, guid: 2338c18994f98764e9d7474d2fffb8e3, type: 2}
 --- !u!4 &343276987
 Transform:
   m_ObjectHideFlags: 0

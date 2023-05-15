@@ -16,6 +16,7 @@ public class DragTheCubesMinigame : MonoBehaviour
     [SerializeField] Transform modelParent;
     [SerializeField] Transform modelParentInitial;
     [SerializeField] Socket[] matrixSocket;
+    [SerializeField] GlobalScoreObject globalScore;
 
     public int success = 0;
     public int fails = 0;
@@ -87,6 +88,8 @@ public class DragTheCubesMinigame : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Congratulations");
         canvas.gameObject.SetActive(true);
         timer.gameObject.SetActive(false);
+
+        globalScore.levelScores[2] = new LevelScore(success, fails);
     }
 
     public bool lvlSuccess() 

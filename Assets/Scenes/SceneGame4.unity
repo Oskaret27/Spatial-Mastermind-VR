@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ae0ec34292249c54fa5746b6a33c5a55, type: 3}
+  m_Texture: {fileID: 2800000, guid: c7bcd09c7602eb04b9b5ae264d799cd6, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5988,7 +5988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff03d05af5f18d14993699d04a1b8b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerDuration: 10
+  timerDuration: 30
   countDown: 1
   initialized: 0
   firstMinute: {fileID: 741864733}
@@ -10233,6 +10233,7 @@ MonoBehaviour:
   - {fileID: 1401311145}
   - {fileID: 8504605}
   - {fileID: 436358745}
+  globalScore: {fileID: 11400000, guid: 2338c18994f98764e9d7474d2fffb8e3, type: 2}
   success: 0
   fails: 0
 --- !u!1 &2077807444
