@@ -15,8 +15,6 @@ public class ThrowYourChoiceMinigame : MonoBehaviour
     [SerializeField] ThrowYourChoiceLevel[] levels;
     [SerializeField] Transform modelParent;
     [SerializeField] GameObject[] options;
-    [SerializeField] GlobalScoreObject globalScore;
-
 
     public int success = 0;
     public int fails = 0;
@@ -42,7 +40,7 @@ public class ThrowYourChoiceMinigame : MonoBehaviour
         closeDoor();
     }
 
-    //objeto manipulable 30 seg, luego se destruye, se cierran las puertas y PrepareLevel()
+
     void closeDoor() 
     {
         if (timer.IsTimeOver() && timer.initialized && !closedDoors)
@@ -125,7 +123,8 @@ public class ThrowYourChoiceMinigame : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Congratulations");
         canvas.gameObject.SetActive(true);
 
-        globalScore.levelScores[3] = new LevelScore(success, fails);
+        PlayerPrefs.SetInt("Level4Successes", success);
+        PlayerPrefs.SetInt("Level4Failures", fails);
     }
  
 }

@@ -1295,7 +1295,6 @@ MonoBehaviour:
   SuccessesText: {fileID: 266410974}
   FailuresText: {fileID: 47482889}
   canvas: {fileID: 814116965}
-  globalScore: {fileID: 11400000, guid: 2338c18994f98764e9d7474d2fffb8e3, type: 2}
 --- !u!4 &343276987
 Transform:
   m_ObjectHideFlags: 0
@@ -4005,8 +4004,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497543969}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.56, y: 1.5009999, z: 4.2910004}
-  m_LocalScale: {x: 1, y: 2.67, z: 2.22}
+  m_LocalPosition: {x: -5, y: 1, z: 5.4}
+  m_LocalScale: {x: 2, y: 1, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 800612821}

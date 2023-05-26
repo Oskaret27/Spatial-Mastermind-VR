@@ -14,7 +14,6 @@ public class ShadowPuppetsMinigame : MonoBehaviour
     [SerializeField] ShadowPuppetsLevel[] levels;
     [SerializeField] Transform modelParent;
     [SerializeField] ButtonVR[] buttons;
-    [SerializeField] GlobalScoreObject globalScore;
 
     public int success = 0;
     public int fails = 0;
@@ -66,7 +65,8 @@ public class ShadowPuppetsMinigame : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Congratulations");
         canvas.gameObject.SetActive(true);
 
-        globalScore.levelScores[1] = new LevelScore(success, fails);
+        PlayerPrefs.SetInt("Level2Successes", success);
+        PlayerPrefs.SetInt("Level2Failures", fails);
     }
 
     public void OnButtonPressed(int index)

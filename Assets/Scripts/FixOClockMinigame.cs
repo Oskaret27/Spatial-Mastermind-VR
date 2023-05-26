@@ -13,7 +13,6 @@ public class FixOClockMinigame : MonoBehaviour
     [SerializeField] Text SuccessesText;
     [SerializeField] Text FailuresText;
     [SerializeField] GameObject canvas;
-    [SerializeField] GlobalScoreObject globalScore;
 
     int success = 0;
     int fails = 0;
@@ -52,7 +51,8 @@ public class FixOClockMinigame : MonoBehaviour
         gear.gameObject.SetActive(false);
         shapes.gameObject.SetActive(false);
 
-        globalScore.levelScores[0] = new LevelScore(success, fails);
+        PlayerPrefs.SetInt("Level1Successes", success);
+        PlayerPrefs.SetInt("Level1Failures", fails);
     }
 
     public void OnButtonPressed() 

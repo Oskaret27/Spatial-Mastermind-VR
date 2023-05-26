@@ -349,7 +349,6 @@ MonoBehaviour:
   - {fileID: 834740846}
   - {fileID: 2141857618}
   - {fileID: 390589846}
-  globalScore: {fileID: 11400000, guid: 2338c18994f98764e9d7474d2fffb8e3, type: 2}
   success: 0
   fails: 0
 --- !u!1001 &49607703
@@ -789,8 +788,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288234321}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.56, y: 1.5009999, z: 4.2910004}
-  m_LocalScale: {x: 1, y: 2.67, z: 2.22}
+  m_LocalPosition: {x: -5, y: 1, z: 5.4}
+  m_LocalScale: {x: 2, y: 1, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 981152824}
